@@ -8,31 +8,59 @@
     Screen2:
         name: 'screen2'
         id: screen2   
+<Box>:
+    ScrollView:
+        size_hint: (1, None)
+        height: root.height  # Torna o ScrollView do mesmo tamanho do Box
+        BoxLayout:
+            id: box
+            orientation:'vertical'
+            size_hint_y:None
+            height: self.minimum_height
+
+
+
+
+<Tabela>:
+    size_hint_y:None
+    height: '100dp'
+
+    #text:'Teste'
+
+
+
 
 #Chama a função Screen1 para ser alterado propriedades e layout do widget
 <Screen1>:
-    BoxLayout:
-        orientation:'vertical'
-        TextInput:
-            id: txt_input
-            hint_text: 'olá'
+    ScrollView:
+        BoxLayout:
+            size_hint_y: None
+            height: 2000
+            orientation:'vertical'
+            TextInput:
+                id: txt_input
+                hint_text: 'olá'
 
-        MyButton:
-            id: Button_1
-            text:'enviar'
-            #on_release: root.receberTxt()
-            on_release: root.receberTxt(root.ids.txt_input.text)
-            #envia o método root.ids.txt_input.text
-            #como argumento da função, ele lê isso e recebe o valor de textinput mais facilmente
-        Button: 
-            text: 'teste'
-            on_release: root.manager.current = 'screen2'
+            MyButton:
+                id: Button_1
+                text:'enviar'
+                #on_release: root.receberTxt()
+                on_release: root.receberTxt(root.ids.txt_input.text)
+                #envia o método root.ids.txt_input.text
+                #como argumento da função, ele lê isso e recebe o valor de textinput mais facilmente
+            Button: 
+                text: 'teste'
+                on_release: root.manager.current = 'screen2'
+            Label:
+                size_hint: (10,10)
 
 
 #Chama a função Screen2 para ser alterado propriedades e layout do widget
 <Screen2>:
+
     BoxLayout:
         orientation:'vertical'
+        
     #spacing é espaçamento entre os objetos dentro do layout
         spacing: '10dp'
     #padding são espaçamento das bordas, pede no min. dois argumentos 
@@ -54,7 +82,18 @@
             background_normal: ''
             background_color: 1, 1, 1, 1
             color: 1, 0, 0, 1  
-
+        Label:
+            id:label_2
+            text: "texto de teste de teste de teste de teste de teste de teste"
+            text_size: self.size
+            font_size: '50sp'
+            #.before faz com que o canvas apareça de background
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 0.196, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos #recebe a posição do label e coloca o retangulo nele
         MyButton:
             id: Button_2
             text:'teste 2'
@@ -63,19 +102,27 @@
         MyButton: 
             text:'teste de novo'
             on_release: root.manager.current = 'screen1'
-        
+
 
 <MyButton@Button>:
     #Cria uma Classe que deriva da classe Button em que herda os mesmos atributos
     #da classe Button, Com a capacidade de alterar os valores de forma individual
     #onde quer que a classe "Mybutton" seja chamada, ela vai se comportar como um 
     #Button com os valores alterados
-
-    #R,G,B e Transparência
-
-    #background_color: 0.671, 0.671, 0.671, 1
-    #background_normal e _down só aceita imagens strings
-    #background_normal: ''
-    #background_down:
     
+    #R,G,B e Transparência
+    background_color: 0.671, 0.671, 0.671, 1
+    #background_normal: e background_down só aceita imagens strings
+    background_normal: ''
+    #background_down:
+    text: 'teste'
     font_size: '15sp' #SP é a mesma coisa que DP, só que para pixels
+
+<TabelaCaixa@Button>:
+    #background_color: 0.671, 0.671, 0.671, 1
+    #font_size: '15sp'
+    #background_normal: ''
+    text: 'teste'
+    size_hint_y:None
+    height: '100dp'
+    
