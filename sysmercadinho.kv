@@ -20,7 +20,10 @@
         MyButton:
             id: Button_1
             text:'enviar'
-            on_release: root.receberTxt()
+            #on_release: root.receberTxt()
+            on_release: root.receberTxt(root.ids.txt_input.text)
+            #envia o método root.ids.txt_input.text
+            #como argumento da função, ele lê isso e recebe o valor de textinput mais facilmente
         Button: 
             text: 'teste'
             on_release: root.manager.current = 'screen2'
@@ -49,7 +52,7 @@
             id: label_1
             text: "text"
             background_normal: ''
-            background_color: 1,1,1, 1
+            background_color: 1, 1, 1, 1
             color: 1, 0, 0, 1  
 
         MyButton:
@@ -60,39 +63,6 @@
         MyButton: 
             text:'teste de novo'
             on_release: root.manager.current = 'screen1'
-         
-<PrimeiroLayout>:
-    orientation:'vertical'
-    #spacing é espaçamento entre os objetos dentro do layout
-    spacing: '10dp'
-    #padding são espaçamento das bordas, pede no min. dois argumentos 
-    #o primeiro são as laterais e o segundo são de cima e em baixo
-
-    #quando coloca 4 valores, o primeiro é da esquerda
-    #o segundo é de cima o terceiro da direita e o quarto de baixo
-    padding: '5dp','5dp'
-    canvas:
-        Color: 
-            rgba: 0.196, 0.196, 0.196, 1
-        Rectangle:
-
-            #source: "Recebe uma string como imagem"
-            size: self.size
-    
-    Label:
-        id: label_1
-        text: "text"
-        background_normal: ''
-        background_color: 1,1,1, 1
-        color: 1, 0, 0, 1  
-    MyButton:
-        id: Button_1
-        text:'teste'
-        on_release: root.printest()
-    MyButton:
-        id: Button_2
-        text:'teste 2'
-        size_hint: (1, 1)
         
 
 <MyButton@Button>:
