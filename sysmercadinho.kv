@@ -1,0 +1,111 @@
+#Chama a função TelaManager
+<TelaManager>:
+#Chama a função Screen1 e atribui um nome e id
+    Screen1:
+        name: 'screen1'
+        id: screen1
+#Chama a função Screen2 e atribui um nome e id
+    Screen2:
+        name: 'screen2'
+        id: screen2   
+
+#Chama a função Screen1 para ser alterado propriedades e layout do widget
+<Screen1>:
+    BoxLayout:
+        orientation:'vertical'
+        TextInput:
+            id: txt_input
+            hint_text: 'olá'
+
+        MyButton:
+            id: Button_1
+            text:'enviar'
+            on_release: root.receberTxt()
+        Button: 
+            text: 'teste'
+            on_release: root.manager.current = 'screen2'
+
+
+#Chama a função Screen2 para ser alterado propriedades e layout do widget
+<Screen2>:
+    BoxLayout:
+        orientation:'vertical'
+    #spacing é espaçamento entre os objetos dentro do layout
+        spacing: '10dp'
+    #padding são espaçamento das bordas, pede no min. dois argumentos 
+    #o primeiro são as laterais e o segundo são de cima e em baixo
+
+    #quando coloca 4 valores, o primeiro é da esquerda
+    #o segundo é de cima o terceiro da direita e o quarto de baixo
+        padding: '5dp','5dp'
+        canvas:
+            Color: 
+                rgba: 0.196, 0.196, 0.196, 1
+            Rectangle:
+            #source: "Recebe uma string como imagem"
+                size: self.size
+
+        Label:
+            id: label_1
+            text: "text"
+            background_normal: ''
+            background_color: 1,1,1, 1
+            color: 1, 0, 0, 1  
+
+        MyButton:
+            id: Button_2
+            text:'teste 2'
+            size_hint: (1, 1)
+            orientation:'vertical'
+        MyButton: 
+            text:'teste de novo'
+            on_release: root.manager.current = 'screen1'
+         
+<PrimeiroLayout>:
+    orientation:'vertical'
+    #spacing é espaçamento entre os objetos dentro do layout
+    spacing: '10dp'
+    #padding são espaçamento das bordas, pede no min. dois argumentos 
+    #o primeiro são as laterais e o segundo são de cima e em baixo
+
+    #quando coloca 4 valores, o primeiro é da esquerda
+    #o segundo é de cima o terceiro da direita e o quarto de baixo
+    padding: '5dp','5dp'
+    canvas:
+        Color: 
+            rgba: 0.196, 0.196, 0.196, 1
+        Rectangle:
+
+            #source: "Recebe uma string como imagem"
+            size: self.size
+    
+    Label:
+        id: label_1
+        text: "text"
+        background_normal: ''
+        background_color: 1,1,1, 1
+        color: 1, 0, 0, 1  
+    MyButton:
+        id: Button_1
+        text:'teste'
+        on_release: root.printest()
+    MyButton:
+        id: Button_2
+        text:'teste 2'
+        size_hint: (1, 1)
+        
+
+<MyButton@Button>:
+    #Cria uma Classe que deriva da classe Button em que herda os mesmos atributos
+    #da classe Button, Com a capacidade de alterar os valores de forma individual
+    #onde quer que a classe "Mybutton" seja chamada, ela vai se comportar como um 
+    #Button com os valores alterados
+
+    #R,G,B e Transparência
+
+    #background_color: 0.671, 0.671, 0.671, 1
+    #background_normal e _down só aceita imagens strings
+    #background_normal: ''
+    #background_down:
+    
+    font_size: '15sp' #SP é a mesma coisa que DP, só que para pixels
