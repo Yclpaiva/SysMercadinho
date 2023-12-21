@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Minha Página{% endblock %}
+
+{% block header %}Histórico{% endblock %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico de Deduções</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #3498db;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #ecf0f1;
+        }
+
+        li:before {
+            content: "\2022";
+            color: #3498db;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        li span {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Histórico de Deduções</h1>
+    
+    <ul>
+        {% for deducao in historico_deducoes %}
+            <li>
+                <span>{{ deducao.usuario.username }}</span> vendeu <span>{{ deducao.quantidade_deduzida }}</span> unidades do produto <span>{{ deducao.produto.nome }}</span> em <span>{{ deducao.data_deducao }}</span> com um preço total de: R$ <span>{{ deducao.preco_total }}</span>.
+
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+{% endblock %}

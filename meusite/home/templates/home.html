@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Minha Página{% endblock %}
+
+{% block header %}Home{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "home/css/style.css" %}">
+    <script src="{% static 'home/js/home.js' %}" defer></script>
+    <div class="tabela-container">
+        <div class="metade-tela">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela1-body">
+                        <!-- Aqui você pode iterar sobre os dados que vêm de "dados" -->
+                        {% for item in dados %}
+                            <tr data-id="{{ item.id }}">
+                                <td>{{ item.nome }}</td>
+                                <td>{{ item.quantidade }}</td>
+                                <td>{{ item.preco }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="metade-tela">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela2-body">
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Total:</td>
+                            <td id="total-tabela2">R$0.00</td>
+                        </tr>
+                    </tfoot>
+                    <!-- Aqui os itens movidos para a tabela 2 aparecerão dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Parte do HTML -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="fechar" onclick="fecharModal()">&times;</span>
+        <p>Nota fiscal de todos os itens:</p>
+        <div id="divTabela2" class="tabela-responsiva"></div>
+        <button id="botaoDeduzir" onclick="deduzirValores()">Diminuir Valores no Banco de Dados</button>
+    </div>
+</div>
+
+        
+        
+    </div>
+    
+
+{% endblock %}

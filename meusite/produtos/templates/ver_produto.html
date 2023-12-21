@@ -1,0 +1,29 @@
+<!-- templates/minha_pagina.html -->
+
+{% extends "base.html" %}
+
+{% block title %}Estoque {% endblock %}
+
+{% block header %}Cabeçalho Personalizado{% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in dados %}
+                <tr>
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.quantidade }}</td>
+                    <td>{{ item.preco }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
