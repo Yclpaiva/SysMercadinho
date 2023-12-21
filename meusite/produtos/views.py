@@ -8,14 +8,10 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def reset_database(request):
-    # Obtém o caminho completo para o arquivo de backup
     backup_path = '/home/yuri/Documentos/GitHub/SysMercadinho/teste3/meusite/backup.sqlite3'
-    
-    # Obtém o caminho completo para o arquivo do banco de dados principal
     db_path = '/home/yuri/Documentos/GitHub/SysMercadinho/teste3/meusite/db.sqlite3'
     
     try:
-        # Copia o arquivo de backup para o arquivo do banco de dados principal
         shutil.copyfile(backup_path, db_path)
         return render(request, 'reset_database_sucesso.html')
     except Exception as e:
@@ -35,5 +31,3 @@ def produtos(request):
         'ver_produto.html',
         {'dados':dados},        
                   )
-
-# views.py

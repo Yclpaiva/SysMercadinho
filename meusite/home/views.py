@@ -1,17 +1,16 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from produtos.models import Produtos
-
-
-import json
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt,csrf_protect
 from produtos.models import Produtos
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
+from produtos.models import DeducaoHistorico
+import json
 
 
-from django.contrib.auth.decorators import login_required
 
 @login_required
 def home(request):
@@ -21,15 +20,6 @@ def home(request):
         'home.html',
         {'dados':dados},        
                   )
-    
-
-
-
-
-# views.py
-from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
-from produtos.models import DeducaoHistorico
 
 def deduzir_valor(request):
     if request.method == 'POST':
@@ -47,9 +37,9 @@ def deduzir_valor(request):
                     produto.quantidade -= quantidade_deduzir
                     produto.save()
 
-                    # Adiciona ao histórico
+                    
                     DeducaoHistorico.objects.create(
-                        usuario=request.user,  # Se você estiver usando autenticação de usuário
+                        usuario=request.user, 
                         produto=produto,
                         quantidade_deduzida=quantidade_deduzir
                     )

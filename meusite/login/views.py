@@ -10,7 +10,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')  # Redirecione para a página principal
+            return redirect('home')
         else:
             messages.error(request, 'Credenciais inválidas. Tente novamente.')
 
@@ -18,4 +18,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')  # Redirecione para a página de login
+    return redirect('login')

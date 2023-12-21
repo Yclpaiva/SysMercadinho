@@ -19,7 +19,6 @@
                     </tr>
                 </thead>
                 <tbody id="tabela1-body">
-                        <!-- Aqui você pode iterar sobre os dados que vêm de "dados" -->
                         {% for item in dados %}
                             <tr data-id="{{ item.id }}">
                                 <td>{{ item.nome }}</td>
@@ -49,13 +48,11 @@
                             <td id="total-tabela2">R$0.00</td>
                         </tr>
                     </tfoot>
-                    <!-- Aqui os itens movidos para a tabela 2 aparecerão dinamicamente -->
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Parte do HTML -->
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="fechar" onclick="fecharModal()">&times;</span>
