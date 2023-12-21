@@ -1,4 +1,6 @@
-# Documentação: Iniciando o manage.py no Django
+# Documentação: 
+
+
 
 ## Introdução
 
