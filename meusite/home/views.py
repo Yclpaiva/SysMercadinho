@@ -1,12 +1,9 @@
-from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.shortcuts import render
 from produtos.models import Produtos
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt,csrf_protect
 from produtos.models import Produtos
 from django.shortcuts import get_object_or_404
-from django.views.decorators.http import require_POST
 from produtos.models import DeducaoHistorico
 import json
 

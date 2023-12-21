@@ -1,9 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Produtos, DeducaoHistorico
-from django.core.management import call_command
 import shutil
-import os
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -26,8 +23,4 @@ def historico(request):
 @login_required
 def produtos(request):
     dados = Produtos.objects.all()
-    return render(
-        request,
-        'ver_produto.html',
-        {'dados':dados},        
-                  )
+    return render(request,'ver_produto.html',{'dados':dados})
